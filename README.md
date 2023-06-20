@@ -21,6 +21,7 @@ Your backend implemented in Node should call a mocked-out interface/endpoint for
  - [ ] Polish and UX
  - [ ] Highly reusable components
  - [ ] Tests
+ - [ ] Hosted and Demoable
 
 ## Requirements
 
