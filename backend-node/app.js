@@ -9,15 +9,14 @@ app.get('/invoices', async (req,res)=>{
 })
 
 app.post('/invoice', async (req,res)=>{
-    // https://my-project-7b52d.firebaseio.com/invoices.json
     await fetch("https://my-project-7b52d.firebaseio.com/invoices.json",{
         method:"POST",
-        body: req.body,
+        body: JSON.stringify(req.body),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    })
+    });
     res.status(201).send()
 })
 
