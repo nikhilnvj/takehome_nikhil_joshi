@@ -42,6 +42,10 @@ function InvoiceViewModal({onClose, invoice}) {
                     <div>{invoice.sent ? 'Yes' : 'No'}</div>
                 </div>
                 <div className="flex gap-3 items-center px-6">
+                    <div className="text-sm font-bold">Notes:</div>
+                    <div>{invoice.notes}</div>
+                </div>
+                <div className="flex gap-3 items-center px-6">
                     <div className="text-sm font-bold">Invoice Total:</div>
                     <div>${invoiceTotal}</div>
                 </div>

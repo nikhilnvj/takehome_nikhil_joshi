@@ -13,3 +13,14 @@ export const createInvoice = async (data)=>{
         }
     })
 }
+
+export const updateInvoiceSentStatus = async (id,status)=>{
+    return fetch(`https://my-project-7b52d.firebaseio.com/invoices/${id}/sent.json`,{
+        method:"PUT",
+        body: status,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+}

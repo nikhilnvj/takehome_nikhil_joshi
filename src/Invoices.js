@@ -1,11 +1,10 @@
 // https://my-project-7b52d.firebaseio.com/invoices.json
-import {getInvoices} from "./services/api";
+import {getInvoices, updateInvoiceSentStatus} from "./services/api";
 import {useEffect, useMemo, useState} from "react";
 import spinner from './assets/spinner.svg'
 import Button from "./UI/Button";
 import dayjs from "dayjs";
 import dayjsPluginUTC from 'dayjs-plugin-utc'
-import Modal from "./UI/Modal";
 import InvoiceCreateModal from "./components/InvoiceCreateModal";
 import Notification from "./UI/Notification";
 import InvoiceViewModal from "./components/InvoiceViewModal";
@@ -36,8 +35,10 @@ function Invoices() {
 
   const isAnyInvoicePastDue = useMemo(()=> Object.values(invoices).some(isInvoicePastDue), [invoices])
 
-  const sendEmail = (invoice)=>{
-      window.open(`mailto:test@example.com?subject=Invoice&body=${JSON.stringify(invoice)}`)
+  const sendEmail = async (id, invoice)=>{
+      window.open(`mailto:nikhil@example.com?subject=Invoice&body=${JSON.stringify(invoice)}`)
+      await updateInvoiceSentStatus(id, true)
+      loadInvoices()
   }
 
   useEffect(()=>{
@@ -77,13 +78,13 @@ function Invoices() {
                                     <td className="border-r border-gray-100 p-4 group-hover:bg-gray-50">
                                         <div className="flex gap-2">
                                             <button
-                                                className="border rounded-md p-2 text-xs bg-blue-400 text-white font-bold hover:bg-blue-500"
+                                                className="border rounded-md p-2 text-xs bg-blue-400 text-white font-bold hover:bg-blue-500 shadow-sm"
                                                 onClick={()=> setSelectedInvoice(invoice)}>
                                                     View
                                             </button>
                                             <button
-                                                className="border rounded-md p-2 text-xs bg-white text-black font-bold hover:bg-gray-100"
-                                                onClick={()=> sendEmail(invoice)}
+                                                className="border rounded-md p-2 text-xs bg-white text-black font-bold hover:bg-gray-100 shadow-sm"
+                                                onClick={()=> sendEmail(id, invoice)}
                                                 >
                                                 Email Invoice
                                             </button>
