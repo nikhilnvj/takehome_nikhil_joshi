@@ -1,10 +1,10 @@
 export const getInvoices = async ()=> {
-    const resp = await fetch("https://my-project-7b52d.firebaseio.com/invoices.json");
+    const resp = await fetch("http://localhost:3001/invoices");
     return await resp.json()
 }
 
 export const createInvoice = async (data)=>{
-    return fetch("https://my-project-7b52d.firebaseio.com/invoices.json",{
+    return fetch("http://localhost:3001/invoice",{
         method:"POST",
         body: JSON.stringify(data),
         headers: {
@@ -15,9 +15,9 @@ export const createInvoice = async (data)=>{
 }
 
 export const updateInvoiceSentStatus = async (id,status)=>{
-    return fetch(`https://my-project-7b52d.firebaseio.com/invoices/${id}/sent.json`,{
+    return fetch(`http://localhost:3001/invoice-sent-status/${id}`,{
         method:"PUT",
-        body: status,
+        body: JSON.stringify({status}),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
