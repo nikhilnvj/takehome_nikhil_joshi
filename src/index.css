@@ -15,3 +15,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.notification {
+  @apply fixed top-2 z-20 min-w-[24rem] rounded-md bg-amber-100 flex justify-between items-center p-5 mr-4;
+  transition: all ease-in 300ms;
+  animation: swipe 300ms forwards;
+}
+
+@keyframes swipe {
+  0%{
+    right: -1000px
+  }
+
+  100%{
+    right:0
+  }
+}
