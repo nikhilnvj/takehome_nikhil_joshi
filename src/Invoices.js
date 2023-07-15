@@ -2,9 +2,11 @@
 import {getInvoices} from "./services/api";
 import {useEffect, useState} from "react";
 import spinner from './assets/spinner.svg'
-import Button from "./components/Button";
+import Button from "./UI/Button";
 import dayjs from "dayjs";
 import dayjsPluginUTC from 'dayjs-plugin-utc'
+import Modal from "./UI/Modal";
+import InvoiceCreateModal from "./components/InvoiceCreateModal";
 
 dayjs.extend(dayjsPluginUTC)
 
@@ -12,6 +14,7 @@ function Invoices() {
 
   const [loading, setLoading] = useState(false)
   const [invoices, setInvoices] = useState([])
+  const [showModal, setShowModal] = useState(false)
   const loadInvoices = async ()=>{
     try{
         setLoading(true)
@@ -34,7 +37,7 @@ function Invoices() {
   return (
    <div className="flex flex-col">
     <div className="mt-6 w-full text-right pb-6">
-        <Button title="Create Invoice" />
+        <Button title="Create Invoice" onClick={()=> setShowModal(true)} />
     </div>
     {!loading &&
         <div className="mt-10">
@@ -49,8 +52,8 @@ function Invoices() {
                 </thead>
                 <tbody className="group">
                     {
-                        invoices.map((invoice)=>{
-                            return <tr className={`group-hover:bg-gray-50 cursor-pointer ${isInvoicePastDue(invoice) ? 'bg-red-100': null}`}>
+                        Object.entries(invoices).map(([id, invoice])=>{
+                            return <tr key={id} className={`group-hover:bg-gray-50 cursor-pointer ${isInvoicePastDue(invoice) ? 'bg-red-100': null}`}>
                                     <td className="border-r border-gray-100 p-4 group-hover:bg-gray-50">{invoice.status}</td>
                                     <td className="border-r border-gray-100 p-4">
                                         {dayjs.utc(invoice.due_date).format("MMM DD, YYYY")}
@@ -72,6 +75,11 @@ function Invoices() {
     {
         loading && <img className="w-20 self-center" src={spinner} alt="loading..." />
     }
+       { showModal &&
+            <InvoiceCreateModal
+                onCreate={()=> { setShowModal(false); loadInvoices()}}
+                onClose={()=> setShowModal(false)} />
+        }
    </div>
   );
 }
