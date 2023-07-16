@@ -1,10 +1,11 @@
-export const getInvoices = async ()=> {
-    const resp = await fetch("http://localhost:3001/invoices");
+const baseUrl="https://invoices-api-0433e822781d.herokuapp.com"
+
+export const getInvoices = async ()=> {    const resp = await fetch(`${baseUrl}/invoices`);
     return await resp.json()
 }
 
 export const createInvoice = async (data)=>{
-    return fetch("http://localhost:3001/invoice",{
+    return fetch(`${baseUrl}/invoice`,{
         method:"POST",
         body: JSON.stringify(data),
         headers: {
@@ -15,7 +16,7 @@ export const createInvoice = async (data)=>{
 }
 
 export const updateInvoiceSentStatus = async (id,status)=>{
-    return fetch(`http://localhost:3001/invoice-sent-status/${id}`,{
+    return fetch(`${baseUrl}/invoice-sent-status/${id}`,{
         method:"PUT",
         body: JSON.stringify({status}),
         headers: {
