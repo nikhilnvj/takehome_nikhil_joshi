@@ -29,7 +29,7 @@ All the features have been implemented (including the extra credit ones 😎):
 
 ## 📚  Tech Stack
 
-- Frontend: React 18.x, React Testing Library, Jest, ES6+, Webpack, Babel. (Webpack and Babel config internally managed by React)
+- Frontend: React 18.x, React Testing Library, Tailwind CSS, Jest, ES6+, Webpack, Babel. (Webpack and Babel config internally managed by React)
 - Backend: NodeJS, ExpressJs
 - Database: Firebase
 
