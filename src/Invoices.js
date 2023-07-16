@@ -52,7 +52,7 @@ function Invoices() {
     </div>
     {!loading &&
         <div className="mt-10">
-            <table className="w-full border border-gray-100 shadow-sm">
+            <table data-testid="table" className="w-full border border-gray-100 shadow-sm">
                 <thead className="group">
                     <tr className="border-b border-gray-100 text-left group-hover:bg-gray-50">
                         <th className="border-r border-gray-100 p-4">Status</th>
@@ -64,7 +64,7 @@ function Invoices() {
                 <tbody>
                     {
                         Object.entries(invoices).map(([id, invoice])=>{
-                            return <tr key={id} className={`group cursor-pointer ${isInvoicePastDue(invoice) ? 'bg-red-100': null}`}>
+                            return <tr data-testid="invoice-rows" key={id} className={`group cursor-pointer ${isInvoicePastDue(invoice) ? 'bg-red-100': null}`}>
                                     <td className="border-r border-gray-100 p-4 group-hover:bg-gray-50">{invoice.status}</td>
                                     <td className="border-r border-gray-100 p-4 group-hover:bg-gray-50">
                                         {dayjs.utc(invoice.due_date).format("MMM DD, YYYY")}
