@@ -67,8 +67,9 @@ All the features have been implemented (including the extra credit ones 😎):
   - `invoices.js` - Contains the main Invoices Page
   - `UI` directory contains standalone reusable UI elements
   - `components` directory contains complex components built upon the `UI` components
-  - `services/api.js` - API layer to call the backend REST APIs.   
-
+  - `services/api.js` - API layer to call the backend REST APIs.
+- Backend:
+  - `app.js` - Main Express app that exposes the relevant endpoints to the frontend and also performs CRUD on the Firebase DB.
 ---
 
 ### ⏳ Development Time: ~7hrs
