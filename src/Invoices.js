@@ -30,7 +30,7 @@ function Invoices() {
 
   const isInvoicePastDue=(invoice)=>{
     const now =dayjs()
-    return now.isAfter(dayjs(invoice.due_date), 'date')
+    return now.isAfter(dayjs(invoice.due_date), 'date') && invoice.status.toLowerCase()!=="paid"
   }
 
   const isAnyInvoicePastDue = useMemo(()=> Object.values(invoices).some(isInvoicePastDue), [invoices])
