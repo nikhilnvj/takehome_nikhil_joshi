@@ -1,7 +1,7 @@
 # Studio Frontend Homework
 
 ---
-### 🧾 Frontend Hosted at: [Link](https://invoices-ui-nik-41c4522bfaa9.herokuapp.com/) (Please disable CORS using a plugin like "CORS Unblock" for the API call to work on the browser)
+### 🧾 Frontend Hosted at: [Link](https://invoices-ui-nik-41c4522bfaa9.herokuapp.com/)
 ### 🖥️ Backend Hosted at: [Link](https://invoices-api-0433e822781d.herokuapp.com/invoices)
 
 ---
